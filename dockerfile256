@@ -1,0 +1,29 @@
+# Build stage
+FROM maven:3.9.0-eclipse-temurin-17-alpine AS builder
+WORKDIR /app
+
+# Sadece gerekli dosyaları kopyalayın
+COPY pom.xml .
+COPY src ./src
+
+# Projeyi derleyin ve bağımlılıkları indirin
+RUN mvn clean package -DskipTests
+
+# Run stage
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+ENV JAVA_HOME=/opt/jdk/jdk-17
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+ENV SPRING_PROFILES_ACTIVE=test
+ENV TZ=Europe/Istanbul
+
+# Uygulamayı çalıştırmak için sadece gerekli olan JAR dosyasını kopyalayın
+COPY --from=builder /app/target/*.jar /app/app.jar
+
+LABEL maintainer="@melihhtasci"
+LABEL version="1.0"
+LABEL description="Foreign Exchange Application"
+
+# Uygulamanızın çalıştırılma komutu
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
