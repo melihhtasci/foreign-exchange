@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    networks:
+      - backend
+    ports:
+      - "6379:6379"
+    environment:
+      - TZ=Europe/Istanbul
+
+  foreign-exchange:
+    image: 329654/foreign-exchange:latest
+    container_name: foreign-exchange
+    networks:
+      - backend
+    ports:
+      - "8089:8080"
+    depends_on:
+      - redis
+    environment:
+      - DB_PASSWORD=test
+      - REDIS_PORT=6379
+      - REDIS_TTL=10
+      - CURRENCY_LAYER_ACCESS_KEY=***DO NOT FORGET***
+      - TZ=Europe/Istanbul
+
+
+networks:
+  backend:
+    driver: bridge
