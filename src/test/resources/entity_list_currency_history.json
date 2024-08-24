@@ -1,0 +1,12 @@
+[
+    {
+      "id": 1,
+      "sourceCurrency": "EUR",
+      "sourceAmount": 1.00,
+      "targetCurrency": "TRY",
+      "conversion": 37.75,
+      "transactionId": "07b85753-51ff-4f5e-9532-9d61ffdffdca",
+      "transactionDate": "2024-08-21",
+      "transactionTime": "13:47:33.837215+03:00"
+    }
+  ]

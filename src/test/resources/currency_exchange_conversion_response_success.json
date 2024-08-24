@@ -1,0 +1,10 @@
+{
+  "responseHeader": {
+    "success": true,
+    "code": 200,
+    "message": "Successful",
+    "detailMessage": null
+  },
+  "conversion": 75.492894,
+  "transactionId": "2c6e6645-d452-42bd-833e-a68985c1eddf"
+}
