@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "4cf6d9e0-d18a-46e9-8f38-77378cb59c4e",
+		"name": "Currency Exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7075166"
+	},
+	"item": [
+		{
+			"name": "local history",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8089/api/v1/conversion/history/{transactionDate}/transactionId/{transactionId}?transactionId=d59bda0d-29ab-432d-9ced-7af1b7aefd3a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"api",
+						"v1",
+						"conversion",
+						"history",
+						"{transactionDate}",
+						"transactionId",
+						"{transactionId}"
+					],
+					"query": [
+						{
+							"key": "transactionDate",
+							"value": "2024-08-25",
+							"disabled": true
+						},
+						{
+							"key": "transactionId",
+							"value": "d59bda0d-29ab-432d-9ced-7af1b7aefd3a"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' \\\n  'http://localhost:8085/api/v1/conversion/history/{transactionDate}/transactionId/{transactionId}?transactionDate=asd' \\\n  -H 'accept: */*'"
+			},
+			"response": []
+		},
+		{
+			"name": "local exchange rate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"from\": \"EUR\",\n  \"to\": \"TRY\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8089/api/v1/exchange-rate/convert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"api",
+						"v1",
+						"exchange-rate",
+						"convert"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\n  'http://localhost:8085/api/v1/exchange-rate/convert' \\\n  -H 'accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n  \"from\": \"USD\",\n  \"to\": \"TRY\"\n}'"
+			},
+			"response": []
+		},
+		{
+			"name": "local conversion",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"from\": \"EUR\",\n  \"to\": \"TRY\",\n  \"amount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8089/api/v1/conversion/convert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"api",
+						"v1",
+						"conversion",
+						"convert"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' \\\n  'http://localhost:8085/api/v1/conversion/convert' \\\n  -H 'accept: */*' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n  \"from\": \"USD\",\n  \"to\": \"TRY\",\n  \"amount\": 11\n}'"
+			},
+			"response": []
+		}
+	]
+}
